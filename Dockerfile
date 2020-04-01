@@ -16,6 +16,7 @@ RUN mkdir -p ~/.kube\
 RUN mkdir -p /.kube\
     chmod 700 /.kube
 RUN sh -c 'touch /.kube/config'
+RUN chmod 777 /.kube/config
 RUN mkdir ~/.aws &&\
     chmod 700 ~/.aws
     
