@@ -12,8 +12,6 @@ RUN apk -v --update add \
 VOLUME /root/.aws
 VOLUME /project
 WORKDIR /project
-RUN mkdir -p ./kube
-RUN chmod 666 ./kube
 RUN mkdir -p /project/kube
 RUN chmod 666 /project/kube
 ENTRYPOINT ["aws"]
