@@ -9,6 +9,10 @@ RUN apk -v --update add \
     pip install --upgrade awscli==1.18.33 s3cmd==2.0.1 python-magic && \
     apk -v --purge del py-pip && \
     rm /var/cache/apk/*
+RUN mkdir -p .kube\
+    chmod 666 .kube
+RUN mkdir -p ~/.kube\
+    chmod 666 ~/.kube
 RUN mkdir -p /.kube\
     chmod 700 /.kube
 RUN sh -c 'touch /.kube/config'
@@ -16,8 +20,7 @@ RUN mkdir ~/.aws &&\
     chmod 700 ~/.aws
     
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-RUN chown -R appuser:appuser /.kube
-RUN chown -R appuser:appuser /.kube/config
+RUN chown -R appuser:appgroup /.kube
 
 USER appuser
 
