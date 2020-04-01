@@ -9,9 +9,10 @@ RUN apk -v --update add \
     pip install --upgrade awscli==1.18.33 s3cmd==2.0.1 python-magic && \
     apk -v --purge del py-pip && \
     rm /var/cache/apk/*
-RUN mkdir -p ./kube
-RUN chmod 666 ./kube
+RUN mkdir -p /.kube
+RUN chmod 666 /.kube
 VOLUME /root/.aws
 VOLUME /project
+VOLUME /project/.kube
 WORKDIR /project
 ENTRYPOINT ["aws"]
