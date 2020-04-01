@@ -15,7 +15,7 @@ RUN sh -c 'touch /.kube/config'
 RUN mkdir ~/.aws &&\
     chmod 700 ~/.aws
     
-RUN useradd -ms /bin/bash admin
+RUN adduser -ms /bin/bash admin
 RUN chown -R admin:admin /.kube
 RUN chown -R admin:admin /.kube/config
 
