@@ -15,11 +15,11 @@ RUN sh -c 'touch /.kube/config'
 RUN mkdir ~/.aws &&\
     chmod 700 ~/.aws
     
-RUN adduser -ms /bin/bash admin
-RUN chown -R admin:admin /.kube
-RUN chown -R admin:admin /.kube/config
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+RUN chown -R appuser:appuser /.kube
+RUN chown -R appuser:appuser /.kube/config
 
-USER admin
+USER appuser
 
 # Expose volume for adding credentials
 VOLUME ["~/.aws"]
